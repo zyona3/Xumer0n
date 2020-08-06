@@ -1,4 +1,4 @@
-# Xume0n
+# Xumer0n
 
 This game is called `Numer0n` in my country, Japan.
 In contrast, `MOO`, `Hit & Blow`, `Cow & Bull` might be much more common name in all over the world.
