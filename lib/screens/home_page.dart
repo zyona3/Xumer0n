@@ -1,3 +1,4 @@
+import 'package:Xume0n/utils/algo/good.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -74,9 +75,10 @@ class _MyHomePageState extends State<MyHomePage> {
   int eatCounter = 0;
   int biteCounter = 0;
   List<int> prediction = [];
-  List<int> botPrediction = [];
+  List<int> botPrediction = random.createAnswer();
   // List<int> userAnswer = [1, 2, 3];
-  List<int> cpuAnswer = [3, 4, 5];
+  List<int> cpuAnswer = random.createAnswer();
+  List<List> mosikasite = todai.createPossible(10);
 
   List<int> userAnswer;
   _MyHomePageState(this.userAnswer);
@@ -231,7 +233,7 @@ class _MyHomePageState extends State<MyHomePage> {
             userBiteList.add(biteCounter);
             userEatList.add(eatCounter);
             if (eatCounter == 3) {
-              _showWinDialog();
+              _showResultDialog('You win');
             } else {
               prediction = [];
               changeTurn();
@@ -252,14 +254,15 @@ class _MyHomePageState extends State<MyHomePage> {
         }
         // bot behavior
       } else {
-        botPrediction = random.createAnswer();
+        botPrediction =
+            todai.createCPUpred(mosikasite, userAnswer, botPrediction);
         cpuList.add(botPrediction.toString());
         eatCounter = logic.mooproduct(userAnswer, botPrediction)[0];
         biteCounter = logic.mooproduct(userAnswer, botPrediction)[1];
         cpuBiteList.add(biteCounter);
         cpuEatList.add(eatCounter);
         if (eatCounter == 3) {
-          _showWinDialog();
+          _showResultDialog('You lose');
         } else {
           prediction = [];
           isUser = !isUser;
@@ -302,18 +305,17 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
-  void _showWinDialog() {
+  void _showResultDialog(String msg) {
     showDialog<AlertDialog>(
         barrierDismissible: false,
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text('You Win'),
+            title: Text(msg),
             actions: [
               FlatButton(
                 child: const Text('Play Again'),
                 onPressed: () {
-                  // Navigator.of(context).pop();
                   var count = 0;
                   Navigator.popUntil(context, (route) {
                     return count++ == 2;
@@ -339,14 +341,12 @@ class _MyHomePageState extends State<MyHomePage> {
       botPrediction = [];
       eatCounter = 0;
       biteCounter = 0;
-      userAnswer = random.createAnswer();
+      mosikasite = todai.createPossible(10);
     });
   }
 
   void changeTurn() {
     setState(() {
-      // prediction = [];
-      // botPrediction = [];
       isUser = !isUser;
       eatCounter = 0;
       biteCounter = 0;
