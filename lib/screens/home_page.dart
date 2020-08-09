@@ -109,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                     Container(
-                      child: Text('Xumer0n', style: myFont),
+                      child: Text('Your number is $userAnswer', style: myFont),
                     ),
                     const SizedBox(height: 50),
                     Container(
