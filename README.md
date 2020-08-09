@@ -17,6 +17,8 @@ Goal is to predict 3 numbers that CPU selected.
 `BITE` means that only number itself is correct.
 `EAT` means that the number and the position is correct.
 
+If a particular number had both `E/B`, `E` would be prefered.
+
 Here are some examples.
 
     CPU has 063
