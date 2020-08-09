@@ -23,8 +23,10 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+  MyHomePage({this.userAnswer});
+  List<int> userAnswer;
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState(userAnswer);
 }
 
 final myFont = GoogleFonts.pressStart2p(
@@ -73,8 +75,11 @@ class _MyHomePageState extends State<MyHomePage> {
   int biteCounter = 0;
   List<int> prediction = [];
   List<int> botPrediction = [];
-  List<int> userAnswer = [1, 2, 3];
+  // List<int> userAnswer = [1, 2, 3];
   List<int> cpuAnswer = [3, 4, 5];
+
+  List<int> userAnswer;
+  _MyHomePageState(this.userAnswer);
 
   @override
   Widget build(BuildContext context) {

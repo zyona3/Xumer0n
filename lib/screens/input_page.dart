@@ -98,7 +98,7 @@ class _InputScreenState extends State<InputScreen> {
           setState(() {
             Navigator.push(
               context,
-              MaterialPageRoute<void>(builder: (context) => MyHomePage()),
+              MaterialPageRoute<void>(builder: (context) => MyHomePage(userAnswer: userAnswer)),
             );
           });
         } else {
