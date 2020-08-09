@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/services.dart';
 import './screens/home_page.dart';
+import './screens/input.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -99,7 +100,7 @@ class _IntroScreenState extends State<IntroScreen>
                     Navigator.push(
                       context,
                       MaterialPageRoute<void>(
-                          builder: (context) => MyHomePage()),
+                          builder: (context) => InputScreen()),
                     );
                   },
                   child: Padding(
