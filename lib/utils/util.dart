@@ -19,7 +19,7 @@ mixin logic {
       return false;
     }
   }
-
+  // never used
   static int countEat(List<int> answer, List<int> predction) {
     var ret = 0;
     for (var i = 0; i < answer.length; i++) {
@@ -29,7 +29,7 @@ mixin logic {
     }
     return ret;
   }
-
+  // never used
   static int countBite(List<int> answer, List<int> predction) {
     var ret = 0;
     for (var i = 0; i < predction.length; i++) {
