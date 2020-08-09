@@ -1,4 +1,3 @@
-import 'package:Xume0n/main.dart';
 import 'package:flutter/material.dart';
 import '../utils/util.dart';
 import 'home_page.dart';
@@ -22,9 +21,9 @@ class _InputScreenState extends State<InputScreen> {
     '7',
     '8',
     '9',
-    'call',
+    'Set',
     '0',
-    'back'
+    'Pop'
   ];
   @override
   Widget build(BuildContext context) {
@@ -37,16 +36,23 @@ class _InputScreenState extends State<InputScreen> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8),
-                child: Container(
-                  child: Text(userAnswer.toString(),
-                      style:
-                          const TextStyle(color: Colors.white, fontSize: 60)),
+                child: Column(
+                  children: [
+                    const Text('Set 3 Number',
+                        style: TextStyle(color: Colors.pink, fontSize: 40)),
+                    Container(
+                      child: Text(userAnswer.toString(),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 60)),
+                    ),
+                  ],
                 ),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(60),
+                  padding: const EdgeInsets.all(40),
                   child: Container(
+                    width: MediaQuery.of(context).size.width / 2,
                     child: GridView.builder(
                         shrinkWrap: true,
                         itemCount: 12,

@@ -40,6 +40,27 @@ mixin logic {
     return ret;
   }
 
+  static List<int> mooproduct(List<int> answer, List<int> predction) {
+    var e = 0;
+    var b = 0;
+    for (var i = 0; i < answer.length; i++) {
+      if (predction[i] == answer[i]) {
+        e++;
+      } else {
+        if (answer.contains(predction[i])) {
+          b++;
+        }
+      }
+    }
+    return <int>[e, b];
+  }
+
+  // never used
+  static List<int> mooProduct(List<int> answer, List<int> predction) {
+    final ret = [countEat(answer, predction), countBite(answer, predction)];
+    return ret;
+  }
+
   // never used
   static int convertToInt(List<int> predction) {
     var ret = 0;

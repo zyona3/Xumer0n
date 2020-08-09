@@ -221,8 +221,8 @@ class _MyHomePageState extends State<MyHomePage> {
           if (!logic.isFillable(prediction)) {
             // TODO optimize
             userList.add(prediction.toString());
-            biteCounter = logic.countBite(cpuAnswer, prediction);
-            eatCounter = logic.countEat(cpuAnswer, prediction);
+            eatCounter = logic.mooproduct(cpuAnswer, prediction)[0];
+            biteCounter = logic.mooproduct(cpuAnswer, prediction)[1];
             userBiteList.add(biteCounter);
             userEatList.add(eatCounter);
             if (eatCounter == 3) {
@@ -249,8 +249,8 @@ class _MyHomePageState extends State<MyHomePage> {
       } else {
         botPrediction = random.createAnswer();
         cpuList.add(botPrediction.toString());
-        biteCounter = logic.countBite(userAnswer, botPrediction);
-        eatCounter = logic.countEat(userAnswer, botPrediction);
+        eatCounter = logic.mooproduct(userAnswer, botPrediction)[0];
+        biteCounter = logic.mooproduct(userAnswer, botPrediction)[1];
         cpuBiteList.add(biteCounter);
         cpuEatList.add(eatCounter);
         if (eatCounter == 3) {
