@@ -12,7 +12,7 @@ In contrast, `MOO`, `Hit & Blow`, `Cow & Bull` might be much more common name in
 
 # Rule
 
-Goal is to predict 3 numbers that CPU selected.
+Goal is to predict 4 numbers that CPU selected.
 
 `BITE` means that only number itself is correct.
 `EAT` means that the number and the position is correct.
@@ -21,13 +21,13 @@ If a particular number had both `E/B`, `E` would be prefered.
 
 Here are some examples.
 
-    CPU has 063
+    CPU has 0631
 
-- Call 123, this has `1Eat0Bite`
-- Call 498, this has `0Eat0Bite`
-- Call 610, this has `0Eat2Bite`
-- Call 367, this has `1Eat1Bite`
-- Call 063, this has `3Eat0Bite`  -> Win
+- Call 1234, this has `1Eat0Bite`
+- Call 4985, this has `0Eat0Bite`
+- Call 6102, this has `0Eat2Bite`
+- Call 3672, this has `1Eat1Bite`
+- Call 0631, this has `4Eat0Bite`  -> Win
 
 
 I created best strategy for CPU. Could you beat it?
