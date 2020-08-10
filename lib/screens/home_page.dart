@@ -111,20 +111,62 @@ class _MyHomePageState extends State<MyHomePage> {
                     Container(
                       child: Text('Your number is $userAnswer', style: myFont),
                     ),
-                    const SizedBox(height: 50),
+                    const SizedBox(height: 20),
                     Container(
                       child: Text(prediction.toString(), style: myFont),
                     ),
-                    const SizedBox(height: 50),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('You', style: myFont),
-                        Text('CPU', style: myFont),
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: GridView.builder(
+                                shrinkWrap: true,
+                                itemCount: 12,
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,
+                                  childAspectRatio:
+                                      MediaQuery.of(context).size.width /
+                                          MediaQuery.of(context).size.height *
+                                          5.5,
+                                ),
+                                itemBuilder: (BuildContext contect, int index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      tapped(index);
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        border:
+                                            Border.all(color: Colors.grey[700]),
+                                      ),
+                                      child: Center(
+                                        child: Text(inputList[index],
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20)),
+                                      ),
+                                    ),
+                                  );
+                                }),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text('You', style: myFont),
+                          Text('CPU', style: myFont),
+                        ],
+                      ),
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Expanded(
                           child: userList.isNotEmpty
@@ -135,7 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       (BuildContext context, int index) {
                                     return Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                          MainAxisAlignment.center,
                                       children: [
                                         Text(userList[index].toString(),
                                             style: predictFont),
@@ -152,39 +194,6 @@ class _MyHomePageState extends State<MyHomePage> {
                               : Container(),
                         ),
                         const SizedBox(width: 10),
-                        Expanded(
-                          flex: 1,
-                          child: GridView.builder(
-                              shrinkWrap: true,
-                              itemCount: 12,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
-                                childAspectRatio:
-                                    MediaQuery.of(context).size.width /
-                                        MediaQuery.of(context).size.height *
-                                        1.5,
-                              ),
-                              itemBuilder: (BuildContext contect, int index) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    tapped(index);
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      border:
-                                          Border.all(color: Colors.grey[700]),
-                                    ),
-                                    child: Center(
-                                      child: Text(inputList[index],
-                                          style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 20)),
-                                    ),
-                                  ),
-                                );
-                              }),
-                        ),
                         Expanded(
                           child: cpuList.isNotEmpty
                               ? ListView.builder(
