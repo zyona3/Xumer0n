@@ -35,4 +35,12 @@ I created best strategy for CPU. Could you beat it?
 
 ### Algorithm
 
-- [An optimal MOO strategy -- Tetsuro Tanaka, Faculty of Engineering, University of Tokyo](https://www.tanaka.ecc.u-tokyo.ac.jp/ktanaka/papers/gpw96.pdf)
+In a nutshell, this CPU is likely to minimize the size of set that consists of possible candidates.
+
+Before wi'll dive into the explanation, let me define some keywords.
+
+- `Moo Product` is `(Number of EAT, Number of BITE)`
+
+After CPU make a prediction and get the Moo Product which is corresponding to Real Answer, he calculate all Moo Product with each candidate and his Prediciton due to the fact that Good candidates have the same Moo Product, right?
+
+By removing bad predictions from set of candidates, he is able to achieve minimization of the set.
