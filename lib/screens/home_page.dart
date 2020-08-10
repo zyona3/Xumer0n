@@ -50,6 +50,11 @@ final biteFont = GoogleFonts.pressStart2p(
       color: Colors.blueAccent, fontSize: 10, letterSpacing: 0.1),
 );
 
+final attentionFont = GoogleFonts.pressStart2p(
+  textStyle:
+      const TextStyle(color: Colors.redAccent, fontSize: 8, letterSpacing: 0.1),
+);
+
 class _MyHomePageState extends State<MyHomePage> {
   bool isUser = true;
   List<String> userList = [];
@@ -78,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<int> botPrediction = random.createAnswer();
   // List<int> userAnswer = [1, 2, 3];
   List<int> cpuAnswer = random.createAnswer();
-  List<List> mosikasite = todai.createPossible(10);
+  List<List> mosikasite = todai.createPossible4(10);
 
   List<int> userAnswer;
   _MyHomePageState(this.userAnswer);
@@ -165,6 +170,18 @@ class _MyHomePageState extends State<MyHomePage> {
                         ],
                       ),
                     ),
+                    Text(
+                        'CPU has ' +
+                            mosikasite.length.toString() +
+                            ' candidates',
+                        style: predictFont),
+                    const SizedBox(height: 6),
+                    Text('After you called, plz click call again',
+                        style: attentionFont),
+                    const SizedBox(height: 10),
+                    Text('CPU will give you pred although it takes time',
+                        style: attentionFont),
+                    const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -232,7 +249,6 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       if (isUser) {
         if (logic.checkDuplicate(prediction, index + 1)) {
-          // print('bad input');
         } else if (index == 9) {
           if (!logic.isFillable(prediction)) {
             // TODO optimize
@@ -241,14 +257,14 @@ class _MyHomePageState extends State<MyHomePage> {
             biteCounter = logic.mooproduct(cpuAnswer, prediction)[1];
             userBiteList.add(biteCounter);
             userEatList.add(eatCounter);
-            if (eatCounter == 3) {
+            if (eatCounter == 4) {
               _showResultDialog('You win');
             } else {
               prediction = [];
               changeTurn();
             }
           } else {
-            _showMessage('Please choose 3 number');
+            _showMessage('Please choose 4 digits');
           }
         } else if (index == 11) {
           if (prediction.isNotEmpty) {
@@ -270,7 +286,7 @@ class _MyHomePageState extends State<MyHomePage> {
         biteCounter = logic.mooproduct(userAnswer, botPrediction)[1];
         cpuBiteList.add(biteCounter);
         cpuEatList.add(eatCounter);
-        if (eatCounter == 3) {
+        if (eatCounter == 4) {
           _showResultDialog('You lose');
         } else {
           prediction = [];
@@ -350,7 +366,7 @@ class _MyHomePageState extends State<MyHomePage> {
       botPrediction = [];
       eatCounter = 0;
       biteCounter = 0;
-      mosikasite = todai.createPossible(10);
+      mosikasite = todai.createPossible4(10);
     });
   }
 

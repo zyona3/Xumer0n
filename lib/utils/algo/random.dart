@@ -5,7 +5,7 @@ mixin random {
     final ll = List<int>.generate(10, (i) => i);
     final botprediction = <int>[];
     final _random = Random();
-    while (botprediction.length < 3) {
+    while (botprediction.length < 4) {
       final element = ll[_random.nextInt(ll.length)];
       if (!botprediction.contains(element)) {
         botprediction.add(element);

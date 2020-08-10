@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import '../utils/util.dart';
 import 'home_page.dart';
 
@@ -8,6 +10,16 @@ class InputScreen extends StatefulWidget {
   @override
   _InputScreenState createState() => _InputScreenState();
 }
+
+final gridFont = GoogleFonts.pressStart2p(
+  textStyle:
+      const TextStyle(color: Colors.white, fontSize: 10, letterSpacing: 0.1),
+);
+
+final messageFont = GoogleFonts.pressStart2p(
+  textStyle:
+      const TextStyle(color: Colors.white, fontSize: 20, letterSpacing: 0.1),
+);
 
 class _InputScreenState extends State<InputScreen> {
   List<int> userAnswer = [];
@@ -21,7 +33,7 @@ class _InputScreenState extends State<InputScreen> {
     '7',
     '8',
     '9',
-    'Set',
+    'Duel',
     '0',
     'Pop'
   ];
@@ -38,19 +50,17 @@ class _InputScreenState extends State<InputScreen> {
                 padding: const EdgeInsets.all(8),
                 child: Column(
                   children: [
-                    const Text('Set 3 Number',
-                        style: TextStyle(color: Colors.pink, fontSize: 40)),
+                    Text('Set 4 digits', style: messageFont),
+                    const SizedBox(height: 30),
                     Container(
-                      child: Text(userAnswer.toString(),
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 60)),
+                      child: Text(userAnswer.toString(), style: messageFont),
                     ),
                   ],
                 ),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(40),
+                  padding: const EdgeInsets.all(20),
                   child: Container(
                     width: MediaQuery.of(context).size.width / 2,
                     child: GridView.builder(
@@ -72,10 +82,7 @@ class _InputScreenState extends State<InputScreen> {
                                 border: Border.all(color: Colors.grey[700]),
                               ),
                               child: Center(
-                                child: Text(inputList[index],
-                                    style: const TextStyle(
-                                        color: Colors.pinkAccent,
-                                        fontSize: 20)),
+                                child: Text(inputList[index], style: gridFont),
                               ),
                             ),
                           );
@@ -98,11 +105,12 @@ class _InputScreenState extends State<InputScreen> {
           setState(() {
             Navigator.push(
               context,
-              MaterialPageRoute<void>(builder: (context) => MyHomePage(userAnswer: userAnswer)),
+              MaterialPageRoute<void>(
+                  builder: (context) => MyHomePage(userAnswer: userAnswer)),
             );
           });
         } else {
-          _showMessage('Please choose 3 number');
+          _showMessage('4 digits');
         }
       } else if (index == 11) {
         if (userAnswer.isNotEmpty) {

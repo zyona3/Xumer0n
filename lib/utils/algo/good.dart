@@ -38,4 +38,25 @@ class todai {
     }
     return mosikasite;
   }
+
+  static List<List> createPossible4(int size) {
+    final mosikasite = <List>[];
+    for (var i = 0; i < size; i++) {
+      for (var j = 0; j < size; j++) {
+        if (i != j) {
+          for (var k = 0; k < size; k++) {
+            if (j != k && i != k) {
+              for (var l = 0; l < size; l++) {
+                if (k != l && j != l && i != l) {
+                  final list = <int>[i, j, k, l];
+                  mosikasite.add(list);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return mosikasite;
+  }
 }

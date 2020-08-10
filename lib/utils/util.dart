@@ -13,7 +13,7 @@ mixin logic {
   }
 
   static bool isFillable(List<int> prediction) {
-    if (prediction.length < 3) {
+    if (prediction.length < 4) {
       return true;
     } else {
       return false;
