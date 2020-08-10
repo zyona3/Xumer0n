@@ -118,7 +118,9 @@ class _InputScreenState extends State<InputScreen> {
         }
       } else if (logic.isFillable(userAnswer)) {
         if (index == 10) {
-          userAnswer.add(0);
+          if (!logic.checkDuplicate(userAnswer, 0)) {
+            userAnswer.add(0);
+          }
         } else {
           userAnswer.add(index + 1);
         }

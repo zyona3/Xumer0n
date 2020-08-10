@@ -272,7 +272,9 @@ class _MyHomePageState extends State<MyHomePage> {
           }
         } else if (logic.isFillable(prediction)) {
           if (index == 10) {
-            prediction.add(0);
+            if (!logic.checkDuplicate(prediction, 0)) {
+              prediction.add(0);
+            }
           } else {
             prediction.add(index + 1);
           }
