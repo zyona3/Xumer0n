@@ -108,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: const Icon(Icons.help_outline),
                           onPressed: () {
                             _showMessage(
-                                'EAT mean that \n the number and the position are correct \n\n BITE means that \n only the position is correct');
+                                'EAT mean that \n the number and the position are correct \n\n BITE means that \n only the number is correct');
                           },
                         ),
                       ],
