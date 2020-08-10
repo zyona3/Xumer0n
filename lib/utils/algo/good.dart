@@ -8,7 +8,15 @@ class todai {
     mosikasite
         .removeWhere((item) => listEquals<dynamic>(item, predmoo) == true);
     final mooproduct = logic.mooproduct(ansmoo, predmoo);
-
+    if (listEquals<dynamic>(mooproduct, <int>[0, 0])) {
+      for (var i = 0; i < mosikasite.length; i++) {
+        for (var j = 0; j < predmoo.length; j++) {
+          if (mosikasite[i].contains(predmoo[j])) {
+            mosikasite.removeWhere((item) => item.contains(predmoo[j]));
+          }
+        }
+      }
+    }
     for (var i = 0; i < mosikasite.length; i++) {
       var kouho = mosikasite[i].cast<int>();
       var tmpmooproduct = logic.mooproduct(predmoo, kouho);
